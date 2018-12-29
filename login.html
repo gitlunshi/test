@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<link rel="stylesheet" href="css/index.css">
+<title></title>
+</head>
+<body>
+    <div id="app">
+        <el-container>
+            <div class="login_wrap">
+                <img src="images/logo.png" class="logo_img" />
+                <div class="login_card_wrap">
+                    <img src="images/elizi.png" class="elizi_img" />
+                    <div class="login_card_cont">
+                        <el-input
+                            placeholder="Email/username"
+                            prefix-icon="el-icon-user"
+                            v-model="input21" class="user_img">
+                        </el-input>
+                        <el-input
+                            type="password"
+                            placeholder="Password"
+                            prefix-icon="el-icon-user"
+                            v-model="input22" class="pass_img">
+                        </el-input>
+                        
+                        <el-button type="primary" class="login_btn">Log In</el-button>
+                        <div class="forget_zi">
+                            <a href="javascript:;" style="float:left;">Forgot Username/Password</a>
+                            <a href="javascript:;" style="float:right;">Register For Free</a>
+                        </div>
+                        <!-- <el-alert
+                            title="密码错误"
+                            type="error"
+                            center
+                            show-icon class="passcw">
+                        </el-alert> -->
+                    </div>
+                </div>
+                <div class="copybottom">Copyright©2018-2024 Elitech.All Rights Reserved</div>
+            </div>
+        </el-container>
+    </div>
+
+<script type="text/JavaScript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/vue.js"></script>
+<!-- <script type="text/javascript" src="js/el-index.js"></script> -->
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="js/el-index.js"></script>
+<script type="text/JavaScript" src="js/index.js"></script>
+<script type="text/JavaScript" src="js/login.js"></script>
+<script type="text/JavaScript">
+    $(document).ready(function(){
+        var bodyheight = document.body.clientHeight + 'px';
+        // console.log(height)
+        $('.login_wrap').css('height',bodyheight);
+        f();
+    });
+    var vm = new Vue({
+        el: '#app',
+        data: function() {
+            return { 
+                input21: '',
+                input22: '',
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<link rel="stylesheet" href="css/index.css">
+<title></title>
+</head>
+<body>
+    <div id="app">
+        <el-container>
+            <div class="shipment_cont">
+                <div class="ship_title_mbx" style="margin-bottom: 10px;">
+                    <span class="ship_t1">Transport Map</span>
+                </div> 
+
+
+                <div class="slide_doup stbale">
+                    <div class="htmleaf-content">
+                        <ul class="mainmenu">
+                            <li>
+                                <table width="100%">
+                                    <tr>
+                                        <td>ID</td>
+                                        <td>Template Name</td>
+                                        <td>Trip Name</td>
+                                        <td>Cargo Name</td>
+                                        <td>Safe Range</td>
+                                        <td>Origin</td>
+                                        <td>Destination</td>
+                                        <td>Operation</td>
+                                    </tr>
+                                </table>
+                            </li>
+                            <ul class="submenu">
+                                <li>
+                                    <table width="100%" style="border-spacing: 0;">
+                                        <tr>
+                                            <td>Alert NO.</td>
+                                            <td>Alert Type</td>
+                                            <td>Alert Temperature</td>
+                                            <td>Start Time</td>
+                                            <td>Duration</td>
+                                            <td>Stare Location</td>
+                                            <td>Illumination</td>
+                                            <td><el-button type="primary" icon="el-icon-edit" circle></el-button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Alert NO.</td>
+                                            <td>Alert Type</td>
+                                            <td>Alert Temperature</td>
+                                            <td>Start Time</td>
+                                            <td>Duration</td>
+                                            <td>Stare Location</td>
+                                            <td>Illumination</td>
+                                            <td><el-button type="primary" icon="el-icon-edit" circle></el-button></td>
+                                        </tr>
+                                    </table>
+                                </li>
+                            </ul>
+                        </ul>
+                    </div>
+                </div>
+    
+
+            </div>
+            
+        </el-container>
+    </div>
+
+<script type="text/JavaScript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/vue.js"></script>
+<!-- <script type="text/javascript" src="js/el-index.js"></script> -->
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="js/el-index.js"></script>
+<script type="text/JavaScript" src="js/index.js"></script>
+<script type="text/JavaScript">
+
+    new Vue({
+        el: '#app',
+        data: function() {
+            return { 
+                currentPage4: 4,
+                checked: false,
+                dynamicTags: [],
+                inputVisible: false,
+                inputValue: '',
+                selectchoo: [{
+                    value: '选项1',
+                    label: 'Multiple options,please choose trip status'
+                }, {
+                    value: '选项2',
+                    label: 'Any'
+                }, {
+                    value: '选项3',
+                    label: 'NULL'
+                }, {
+                    value: '选项4',
+                    label: 'Pending'
+                }, {
+                    value: '选项5',
+                    label: 'In Progress'
+                },{
+                    value: '选项6',
+                    label: 'Completed'
+                },{
+                    value: '选项7',
+                    label: 'Closed'
+                }],
+                selectchoo1: [{
+                    value: '选项1',
+                    label: 'Multiple options,please choose trip status'
+                }, {
+                    value: '选项2',
+                    label: 'Any'
+                }, {
+                    value: '选项3',
+                    label: 'NULL'
+                }, {
+                    value: '选项4',
+                    label: 'Pending'
+                }, {
+                    value: '选项5',
+                    label: 'In Progress'
+                },{
+                    value: '选项6',
+                    label: 'Completed'
+                },{
+                    value: '选项7',
+                    label: 'Closed'
+                }],
+                selectchoo2: [{
+                    value: '选项1',
+                    label: 'Multiple options,please choose trip status'
+                }, {
+                    value: '选项2',
+                    label: 'Any'
+                }, {
+                    value: '选项3',
+                    label: 'NULL'
+                }, {
+                    value: '选项4',
+                    label: 'Pending'
+                }, {
+                    value: '选项5',
+                    label: 'In Progress'
+                },{
+                    value: '选项6',
+                    label: 'Completed'
+                },{
+                    value: '选项7',
+                    label: 'Closed'
+                }],
+                selectchoo3: [{
+                    value: '选项1',
+                    label: 'Multiple options,please choose trip status'
+                }, {
+                    value: '选项2',
+                    label: 'Any'
+                }, {
+                    value: '选项3',
+                    label: 'NULL'
+                }, {
+                    value: '选项4',
+                    label: 'Pending'
+                }, {
+                    value: '选项5',
+                    label: 'In Progress'
+                },{
+                    value: '选项6',
+                    label: 'Completed'
+                },{
+                    value: '选项7',
+                    label: 'Closed'
+                }],
+                valuechoo: '',
+                valuechoo1: '',
+                valuechoo2: '',
+                valuechoo3: '',
+                options: [{
+                    value: '选项1',
+                    label: '111'
+                    }, {
+                    value: '选项2',
+                    label: '222'
+                    }, {
+                    value: '选项3',
+                    label: '333'
+                    }, {
+                    value: '选项4',
+                    label: '444'
+                    }, {
+                    value: '选项5',
+                    label: '555'
+                }],
+                value5: [],
+                value1: ''  ,
+                value2: ''  ,
+            }
+        },
+        methods: {
+            handleSizeChange(val) {
+                // console.log(`每页 ${val} 条`);
+            },
+            handleCurrentChange(val) {
+                // console.log(`当前页: ${val}`);
+            },
+            open5() {
+                this.$alert(
+                    "<span class='cartbtn'>Save As…</span>" +
+                    '<strong>chart片段</strong>' +
+                    '</br></br></br></br></br></br></br>', 
+                    'Chart', {
+                dangerouslyUseHTMLString: true,
+                showConfirmButton: false
+                });
+            },
+            handleClose(tag) {
+                this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);
+            },
+
+            showInput() {
+                this.inputVisible = true;
+                this.$nextTick(_ => {
+                this.$refs.saveTagInput.$refs.input.focus();
+                });
+            },
+
+            handleInputConfirm() {
+                let inputValue = this.inputValue;
+                if (inputValue) {
+                this.dynamicTags.push(inputValue);
+                }
+                this.inputVisible = false;
+                this.inputValue = '';
+            }
+        
+ 
+        }
+    })
+</script>
+</body>
+</html>
