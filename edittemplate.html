@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<link rel="stylesheet" href="css/index.css">
+<title></title>
+</head>
+<body>
+    <div id="app">
+        <el-container>
+            
+            <div class="shipment_cont">
+                <div class="ship_title_mbx" style="margin-bottom: 10px;">
+                    <span class="ship_t1">Edit Template</span>
+                </div>
+                <div class="advan_cont">
+                    <div class="advan_list">
+                        <span class="ship_t3">Template Name:</span>
+                        <el-input v-model="input" placeholder="Please enter Template Name"></el-input>
+                    </div>
+                    <div class="advan_list">
+                        <span class="ship_t3">Trip Name:</span>
+                        <el-input v-model="input" placeholder="Please enter Trip Name"></el-input>
+                    </div>
+                    <div class="advan_list">
+                        <span class="ship_t3">Cargo Name:</span>
+                        <el-input v-model="input" placeholder="Please enter Courier No."></el-input>
+                    </div>
+                    <div class="advan_list wd_sel">
+                        <span class="ship_t3">Safe Range:</span>
+                        <el-input v-model="input" placeholder="" style="width: 78px;"></el-input>
+                        <b>~</b>
+                        <el-input v-model="input" placeholder="" style="width: 78px;margin-left: 0;"></el-input>
+                        <el-select v-model="value6" placeholder="℃" style="width: 80px;" >
+                            <el-option
+                                v-for="item in options1"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </div>
+                    <div class="advan_list">
+                        <span class="ship_t3">Origin Name:</span>
+                        <el-input v-model="input" placeholder="Please enter Origin Name"></el-input>
+                    </div>
+                    <div class="advan_list">
+                        <span class="ship_t3">Origin Addr:</span>
+                        <el-input v-model="input" placeholder="Please enter Origin Addr"></el-input>
+                    </div>
+                    <div class="advan_list">
+                        <span class="ship_t3">Destination Name:</span>
+                        <el-input v-model="input" placeholder="Please enter Destination Name"></el-input>
+                    </div>
+                    <div class="advan_list">
+                        <span class="ship_t3">Destination Addr:</span>
+                        <el-input v-model="input" placeholder="Please enter Destination Addr"></el-input>
+                    </div>
+                    <div class="advan_list">
+                        <span class="ship_t3">Email Addr:</span>
+                        <!-- <el-input v-model="input" placeholder="Please enter Cargo Name"></el-input> -->
+                        <div class="add_tag_list" style="margin-left: 10px;">
+                            <el-tag
+                            :key="tag"
+                            v-for="tag in dynamicTags"
+                            closable
+                            :disable-transitions="false"
+                            @close="handleClose(tag)">
+                            {{tag}}
+                            </el-tag>
+                            <el-input
+                            class="input-new-tag"
+                            v-if="inputVisible"
+                            v-model="inputValue"
+                            ref="saveTagInput"
+                            size="small"
+                            @keyup.enter.native="handleInputConfirm"
+                            @blur="handleInputConfirm"
+                            >
+                            </el-input>
+                            <el-button v-else class="button-new-tag" size="small" @click="showInput">+ New Tag</el-button>
+                        </div>
+                    </div>
+
+                    <div class="advan_list">
+                        <span class="ship_t3">C/P Number:</span>
+                        <!-- <el-input v-model="input" placeholder="Please enter Cargo Name"></el-input> -->
+                        <div class="add_tag_list" style="margin-left: 10px;">
+                            <el-tag
+                            :key="tag1"
+                            v-for="tag1 in dynamicTags1"
+                            closable
+                            :disable-transitions="false"
+                            @close="handleClose1(tag1)">
+                            {{tag1}}
+                            </el-tag>
+                            <el-input
+                            class="input-new-tag"
+                            v-if="inputVisible1"
+                            v-model="inputValue1"
+                            ref="saveTagInput"
+                            size="small"
+                            @keyup.enter.native="handleInputConfirm1"
+                            @blur="handleInputConfirm1"
+                            >
+                            </el-input>
+                            <el-button v-else class="button-new-tag" size="small" @click="showInput1">+ New Tag</el-button>
+                        </div>
+                    </div>
+
+                    <div class="twobtns_cont">
+                        <el-button type="primary" @click="open5" style="margin-left: 296px;">Create Shipment</el-button>
+                        <el-button type="success" @click="open">Save as Template</el-button>
+                    </div>
+
+                </div> 
+                
+                
+                
+    
+
+            </div>
+            
+        </el-container>
+    </div>
+
+<script type="text/JavaScript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/vue.js"></script>
+<!-- <script type="text/javascript" src="js/el-index.js"></script> -->
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="js/el-index.js"></script>
+<script type="text/JavaScript" src="js/index.js"></script>
+<script type="text/JavaScript">
+
+    new Vue({
+        el: '#app',
+        data: function() {
+            return { 
+                dynamicTags: [],
+                inputVisible: false,
+                inputValue: '',
+                dynamicTags1: [],
+                inputVisible1: false,
+                inputValue1: '',
+
+                currentPage4: 4,
+                checked: false,
+                options: [{
+                    value: '选项1',
+                    label: '111'
+                    }, {
+                    value: '选项2',
+                    label: '222'
+                    }, {
+                    value: '选项3',
+                    label: '333'
+                    }, {
+                    value: '选项4',
+                    label: '444'
+                    }, {
+                    value: '选项5',
+                    label: '555'
+                }],
+                options1: [{
+                    value: '选项1',
+                    label: '℃'
+                    }, {
+                    value: '选项2',
+                    label: '℉'
+                }],
+                value5: [],
+                value6: [],
+                input: ''
+            }
+        },
+        methods: {
+            handleSizeChange(val) {
+                // console.log(`每页 ${val} 条`);
+            },
+            handleCurrentChange(val) {
+                // console.log(`当前页: ${val}`);
+            },
+            handleClose(tag) {
+                this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);
+            },
+            showInput() {
+                this.inputVisible = true;
+                this.$nextTick(_ => {
+                this.$refs.saveTagInput.$refs.input.focus();
+                });
+            },
+            handleInputConfirm() {
+                let inputValue = this.inputValue;
+                if (inputValue) {
+                this.dynamicTags.push(inputValue);
+                }
+                this.inputVisible = false;
+                this.inputValue = '';
+            },
+            handleClose1(tag1) {
+                this.dynamicTags1.splice(this.dynamicTags1.indexOf(tag1), 1);
+            },
+            showInput1() {
+                this.inputVisible1 = true;
+                this.$nextTick(_ => {
+                this.$refs.saveTagInput.$refs.input.focus();
+                });
+            },
+            handleInputConfirm1() {
+                let inputValue1 = this.inputValue1;
+                if (inputValue1) {
+                this.dynamicTags1.push(inputValue1);
+                }
+                this.inputVisible1 = false;
+                this.inputValue1 = '';
+            },
+            open5() {
+                this.$alert(
+                    "<img src='images/ok.png' class='okicon' />" +
+                    '<strong class="successful_zi">Successful!</strong>' +
+                    '<el-button type="primary" class="cc-el-button--primary" style="margin-left:104px;">Create Shipment</el-button>' + 
+                    '<el-button type="primary" class="cc-el-button--primary" style="margin-left:80px;">Create Shipment</el-button>', 
+                    '', {
+                dangerouslyUseHTMLString: true,
+                showConfirmButton: false
+                });
+            },
+            open() {
+                this.$alert(
+                    "<img src='images/ok.png' class='okicon' />" +
+                    '<strong class="successful_zi"> Save Successful!</strong>' ,
+                    '', {
+                dangerouslyUseHTMLString: true,
+                showConfirmButton: true,
+                confirmButtonText: '确定',
+            
+                });
+            }
+        }
+    })
+</script>
+</body>
+</html>

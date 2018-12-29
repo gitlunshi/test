@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<link rel="stylesheet" href="css/index.css">
+<title></title>
+</head>
+<body>
+    <div id="app">
+        <el-container>
+            <div class="login_wrap">
+                <img src="images/logo.png" class="logo_img" />
+                <div class="login_card_wrap">
+                    <div class="button_su" style="left: 80px;">
+                        <span class="su_button_circle desplode-circle" style="left: -44.5px; top: -233.438px;">
+                        </span>
+                        <a href="javascript:;" class="button_su_inner">
+                            <img src="images/l2.png" class="loimg" />
+                            <span class="button_text_container">Login</span>
+                        </a>
+                    </div>
+                    <div class="button_su" style="left: 130px;">
+                        <span class="su_button_circle desplode-circle" style="left: -44.5px; top: -233.438px;">
+                        </span>
+                        <a href="javascript:;" class="button_su_inner">
+                            <img src="images/l1.png" class="loimg" />
+                            <span class="button_text_container">Register</span>
+                        </a>
+                    </div>
+                    <div class="login_card_cont" style="background: none;border: 0;box-shadow: none;padding: 0;">
+                        <div class="sn_cont_cc">
+                            <span class="sntrack_span">Track/Create Your Shipment</span>
+                            <textarea placeholder="Please enter your datalogger number(s) here"></textarea>
+                            <span class="sntrack_span">Tips:multiple number querues are supported,please use spaces to distinguish between numbers if you need</span>                        
+                            <el-button type="primary" class="snbtn">Search</el-button>
+                        </div>
+                        <!-- <el-alert
+                            title="密码错误"
+                            type="error"
+                            center
+                            show-icon class="passcw">
+                        </el-alert> -->
+                    </div>
+                </div>
+                <div class="copybottom">Copyright©2018-2024 Elitech.All Rights Reserved</div>
+            </div>
+        </el-container>
+    </div>
+
+<script type="text/JavaScript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/vue.js"></script>
+<!-- <script type="text/javascript" src="js/el-index.js"></script> -->
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="js/el-index.js"></script>
+<script type="text/JavaScript" src="js/index.js"></script>
+<script type="text/JavaScript">
+    $(document).ready(function(){
+        var bodyheight = document.body.clientHeight + 'px';
+        // console.log(height)
+        $('.login_wrap').css('height',bodyheight);
+    })
+    new Vue({
+        el: '#app',
+        data: function() {
+            return { 
+                input21: '',
+                input22: '',
+            }
+        }
+    })
+</script>
+</body>
+</html>

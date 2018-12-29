@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/el-index.css" /> -->
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <!-- <script src="js/index.js" type="text/javascript"></script> -->
+</head>
+<body style="overflow: hidden;">
+    <div id="app">
+        <el-container>
+            <el-header>
+                <div class="map_lt_cont">
+                    <img src="images/map_lt.png" class="map_lt" />
+                    <span class="mp_tt">℃ / 2018-11-06 16:12</span>
+                    <span class="mp_bb">China Standard Time GMT+8:00</span>
+                </div>
+                <div class="top_search">
+                    <el-input
+                        placeholder=""
+                        suffix-icon="el-icon-search"
+                        v-model="input2" style="font-size:24px;" class="search_input">
+                    </el-input>
+                </div>
+                
+
+                <el-dropdown trigger="click" class="tx_cc">
+                <span class="el-dropdown-link">
+                    <img src="images/tx.png" class="tx_img">
+                </span>
+                <el-dropdown-menu slot="dropdown">
+                    <el-dropdown-item>列表1</el-dropdown-item>
+                    <el-dropdown-item>列表1</el-dropdown-item>
+                    <el-dropdown-item>列表1</el-dropdown-item>
+                    <el-dropdown-item>列表1</el-dropdown-item>
+                    <el-dropdown-item>列表1</el-dropdown-item>
+                </el-dropdown-menu>
+                </el-dropdown>
+            </el-header>
+            <el-container class="getheigt">
+                <el-aside width="200px">
+                    <el-menu :default-openeds="['1', '3']">
+                        <el-submenu index="1">
+                          <template slot="title"><span class="navspan">Trip Management</span></template>
+                            <el-menu-item-group>
+                                <el-menu-item index="1-1">选项1</el-menu-item>
+                                <el-menu-item index="1-2">选项2</el-menu-item>
+                                <el-menu-item index="1-3">选项3</el-menu-item>
+                            </el-menu-item-group>
+                        </el-submenu>
+                        <el-submenu index="2">
+                            <template slot="title"><span class="navspan">Alert List</span></template>
+                            <el-menu-item-group>
+                                <el-menu-item index="2-1">选项1</el-menu-item>
+                                <el-menu-item index="2-2">选项2</el-menu-item>
+                            </el-menu-item-group>
+                        </el-submenu>
+                    </el-menu>
+                </el-aside>
+                <el-main class="el_main_cont" style="overflow: hidden;">            
+                    <iframe src="shipment.html" frameborder="0" width="100%" height="100%"></iframe>
+                </el-main>
+            </el-container>
+        </el-container>
+    </div>
+</body>
+
+<script type="text/javascript" src="js/vue.js"></script>
+<!-- <script type="text/javascript" src="js/el-index.js"></script> -->
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="js/el-index.js"></script>
+<script src="js/index.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        var offheight = document.body.clientHeight - 70 + 'px';
+        var offwidth = document.body.clientWidth - 200 + 'px';
+        // console.log(height)
+        $('.getheigt').css('height',offheight)
+        $('.el_main_cont').css({
+            "height":offheight,
+            "width":offwidth
+        });
+        initMap();
+    })
+
+
+    new Vue({
+        el: '#app',
+        data: function() {
+            return { 
+                visible: false,
+                input2: '',
+            }
+        }
+    })
+
+
+</script>
+</html>

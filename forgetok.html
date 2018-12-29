@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<link rel="stylesheet" href="css/index.css">
+<title></title>
+</head>
+<body>
+    <div id="app">
+        <el-container>
+            <div class="login_wrap">
+                <img src="images/logo.png" class="logo_img" />
+                <div class="login_card_wrap">
+                    <!-- <img src="images/elizi.png" class="elizi_img" /> -->
+                    <div class="login_card_cont">
+                        <img src="images/ok.png" class="ok_icon" />
+                        <span class="ok_span1">Password Reset Successful</span>
+                        <span class="ok_span2">Please keep your account information properly</span>
+
+                        <el-button type="primary" class="login_btn">Relog In</el-button>
+
+                    </div>
+                </div>
+                <div class="copybottom">Copyright©2018-2024 Elitech.All Rights Reserved</div>
+            </div>
+        </el-container>
+    </div>
+
+<script type="text/JavaScript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/vue.js"></script>
+<!-- <script type="text/javascript" src="js/el-index.js"></script> -->
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="js/el-index.js"></script>
+<script type="text/JavaScript" src="js/index.js"></script>
+<script type="text/JavaScript" src="js/forgetok.js"></script>
+<script type="text/JavaScript">
+    $(document).ready(function(){
+        var bodyheight = document.body.clientHeight + 'px';
+        // console.log(height)
+        $('.login_wrap').css('height',bodyheight);
+        f();
+    });
+    var vm = new Vue({
+        el: '#app',
+        data: function() {
+            return { 
+                input21: '',
+                input22: '',
+            }
+        }
+    })
+</script>
+</body>
+</html>

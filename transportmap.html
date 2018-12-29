@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<link rel="stylesheet" href="css/index.css">
+<title></title>
+</head>
+<body>
+    <div id="app">
+        <el-container>
+            <div class="shipment_cont">
+                <div class="ship_title_mbx">
+                    <span class="ship_t1">Transport Map</span>
+                    <div class="check_refresh" style="width: 165px;right: 0;">
+                        <el-checkbox v-model="checked">Auto-Refresh</el-checkbox>
+                        <span class="refresh_btn el-icon-refresh" style="right: 0;"></span>
+                    </div>
+                    
+                </div>
+                <div class="ship_snsel_cont">
+                    <span class="ship_t2">SN:</span>
+                    <div class="dx_select">
+                        <el-select v-model="value5" multiple placeholder="please choose" style="width:90%;">
+                            <el-option
+                            v-for="item in options"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </div>
+                    <div class="hour_btns">
+                        <el-button size="small">1 Hour</el-button>
+                        <el-button size="small">2 Hour</el-button>
+                        <el-button size="small">8 Hour</el-button>
+                        <el-button size="small">1 Day</el-button>
+                        <el-button size="small">15 Days</el-button>
+                    </div>
+                    <span class="advanced_z">Advanced Search</span>
+                </div>
+                <div class="advan_cont">
+                    <div class="advan_list">
+                        <span class="ship_t2">Begin:</span>
+                        <el-date-picker
+                        v-model="value1"
+                        type="date"
+                        placeholder="Enter Date">
+                        </el-date-picker>
+                    </div>
+                    <div class="advan_list">
+                        <span class="ship_t2">End:</span>
+                        <el-date-picker
+                        v-model="value2"
+                        type="date"
+                        placeholder="Enter Date">
+                        </el-date-picker>
+                    </div>
+                    <div class="advan_list">
+                        <span class="ship_t2">Cargo:</span>
+                        <el-select v-model="valuechoo" placeholder="请选择">
+                            <el-option
+                                v-for="item in selectchoo"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </div>
+                    <div class="advan_list">
+                        <span class="ship_t2">Trip Name:</span>
+                        <el-select v-model="valuechoo1" placeholder="请选择">
+                            <el-option
+                                v-for="item in selectchoo1"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </div>
+                    <div class="advan_list">
+                        <span class="ship_t2">Trip Status:</span>
+                        <el-select v-model="valuechoo2" placeholder="请选择">
+                            <el-option
+                                v-for="item in selectchoo2"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </div>
+                    <div class="advan_list">
+                        <span class="ship_t2">Alert Status:</span>
+                        <el-select v-model="valuechoo3" placeholder="请选择">
+                            <el-option
+                                v-for="item in selectchoo3"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </div>
+                </div> 
+                <div class="slide_doup" style="margin-top:10px;">
+                    <div class="htmleaf-content">
+                        <ul class="mainmenu">
+                            <label class="menuchart" @click="open5">Chart</label>
+                            <li>
+                                <table width="100%">
+                                    <tr>
+                                        <td>SN：<label>24578957</label></td>
+                                        <td>TripName：<label>Fish to Beijing</label></td>
+                                        <td>Cargo：<label>fish</label></td>
+                                        <td>Trip Status：<label>Completed</label></td>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td>
+                                            <img src="images/meanu_rotate_icon.png" class="rotate_down" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </li>
+                            <ul class="submenu">
+                                <li>
+                                    <table width="100%" style="border-spacing: 0;">
+                                        <tr>
+                                            <td>Alert NO.</td>
+                                            <td>Alert Type</td>
+                                            <td>Alert Temperature</td>
+                                            <td>Start Time</td>
+                                            <td>Duration</td>
+                                            <td>Stare Location</td>
+                                            <td>Illumination</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5567</td>
+                                            <td>Above Range</td>
+                                            <td>38℃</td>
+                                            <td>GMT+8 2018-10-19 10:48:50</td>
+                                            <td>3Hours</td>
+                                            <td>江苏省徐州市黄山路1号</td>
+                                            <td>Open</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5567</td>
+                                            <td>Above Range</td>
+                                            <td>38℃</td>
+                                            <td>GMT+8 2018-10-19 10:48:50</td>
+                                            <td>3Hours</td>
+                                            <td>江苏省徐州市黄山路1号</td>
+                                            <td>Open</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5567</td>
+                                            <td>Above Range</td>
+                                            <td>38℃</td>
+                                            <td>GMT+8 2018-10-19 10:48:50</td>
+                                            <td>3Hours</td>
+                                            <td>江苏省徐州市黄山路1号</td>
+                                            <td>Open</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5567</td>
+                                            <td>Above Range</td>
+                                            <td>38℃</td>
+                                            <td>GMT+8 2018-10-19 10:48:50</td>
+                                            <td>3Hours</td>
+                                            <td>江苏省徐州市黄山路1号</td>
+                                            <td>Open</td>
+                                        </tr>
+                                    </table>
+                                </li>
+                            </ul>
+                        </ul>
+                    </div>
+                </div>
+                <div class="slide_doup">
+                    <div class="htmleaf-content">
+                        <ul class="mainmenu">
+                            <label class="menuchart" @click="open5">Chart</label>
+                            <li>
+                                <table width="100%">
+                                    <tr>
+                                        <td>SN：<label>24578957</label></td>
+                                        <td>TripName：<label>Fish to Beijing</label></td>
+                                        <td>Cargo：<label>fish</label></td>
+                                        <td>Trip Status：<label>Completed</label></td>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td>
+                                            <img src="images/meanu_rotate_icon.png" class="rotate_down" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </li>
+                            <ul class="submenu">
+                                <li>
+                                    <table width="100%" style="border-spacing: 0;">
+                                        <tr>
+                                            <td>Alert NO.</td>
+                                            <td>Alert Type</td>
+                                            <td>Alert Temperature</td>
+                                            <td>Start Time</td>
+                                            <td>Duration</td>
+                                            <td>Stare Location</td>
+                                            <td>Illumination</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5567</td>
+                                            <td>Above Range</td>
+                                            <td>38℃</td>
+                                            <td>GMT+8 2018-10-19 10:48:50</td>
+                                            <td>3Hours</td>
+                                            <td>江苏省徐州市黄山路1号</td>
+                                            <td>Open</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5567</td>
+                                            <td>Above Range</td>
+                                            <td>38℃</td>
+                                            <td>GMT+8 2018-10-19 10:48:50</td>
+                                            <td>3Hours</td>
+                                            <td>江苏省徐州市黄山路1号</td>
+                                            <td>Open</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5567</td>
+                                            <td>Above Range</td>
+                                            <td>38℃</td>
+                                            <td>GMT+8 2018-10-19 10:48:50</td>
+                                            <td>3Hours</td>
+                                            <td>江苏省徐州市黄山路1号</td>
+                                            <td>Open</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5567</td>
+                                            <td>Above Range</td>
+                                            <td>38℃</td>
+                                            <td>GMT+8 2018-10-19 10:48:50</td>
+                                            <td>3Hours</td>
+                                            <td>江苏省徐州市黄山路1号</td>
+                                            <td>Open</td>
+                                        </tr>
+                                    </table>
+                                </li>
+                            </ul>
+                        </ul>
+                    </div>
+                </div>
+                <div class="slide_doup">
+                    <div class="htmleaf-content">
+                        <ul class="mainmenu">
+                            <label class="menuchart" @click="open5">Chart</label>
+                            <li>
+                                <table width="100%">
+                                    <tr>
+                                        <td>SN：<label>24578957</label></td>
+                                        <td>TripName：<label>Fish to Beijing</label></td>
+                                        <td>Cargo：<label>fish</label></td>
+                                        <td>Trip Status：<label>Completed</label></td>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td>
+                                            <img src="images/meanu_rotate_icon.png" class="rotate_down" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </li>
+                            <ul class="submenu">
+                                <li>
+                                    <table width="100%" style="border-spacing: 0;">
+                                        <tr>
+                                            <td>Alert NO.</td>
+                                            <td>Alert Type</td>
+                                            <td>Alert Temperature</td>
+                                            <td>Start Time</td>
+                                            <td>Duration</td>
+                                            <td>Stare Location</td>
+                                            <td>Illumination</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5567</td>
+                                            <td>Above Range</td>
+                                            <td>38℃</td>
+                                            <td>GMT+8 2018-10-19 10:48:50</td>
+                                            <td>3Hours</td>
+                                            <td>江苏省徐州市黄山路1号</td>
+                                            <td>Open</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5567</td>
+                                            <td>Above Range</td>
+                                            <td>38℃</td>
+                                            <td>GMT+8 2018-10-19 10:48:50</td>
+                                            <td>3Hours</td>
+                                            <td>江苏省徐州市黄山路1号</td>
+                                            <td>Open</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5567</td>
+                                            <td>Above Range</td>
+                                            <td>38℃</td>
+                                            <td>GMT+8 2018-10-19 10:48:50</td>
+                                            <td>3Hours</td>
+                                            <td>江苏省徐州市黄山路1号</td>
+                                            <td>Open</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5567</td>
+                                            <td>Above Range</td>
+                                            <td>38℃</td>
+                                            <td>GMT+8 2018-10-19 10:48:50</td>
+                                            <td>3Hours</td>
+                                            <td>江苏省徐州市黄山路1号</td>
+                                            <td>Open</td>
+                                        </tr>
+                                    </table>
+                                </li>
+                            </ul>
+                        </ul>
+                    </div>
+                </div>
+    
+
+            </div>
+            
+        </el-container>
+    </div>
+
+<script type="text/JavaScript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/vue.js"></script>
+<!-- <script type="text/javascript" src="js/el-index.js"></script> -->
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="js/el-index.js"></script>
+<script type="text/JavaScript" src="js/index.js"></script>
+<script type="text/JavaScript">
+
+    new Vue({
+        el: '#app',
+        data: function() {
+            return { 
+                currentPage4: 4,
+                checked: false,
+                selectchoo: [{
+                    value: '选项1',
+                    label: 'Multiple options,please choose trip status'
+                }, {
+                    value: '选项2',
+                    label: 'Any'
+                }, {
+                    value: '选项3',
+                    label: 'NULL'
+                }, {
+                    value: '选项4',
+                    label: 'Pending'
+                }, {
+                    value: '选项5',
+                    label: 'In Progress'
+                },{
+                    value: '选项6',
+                    label: 'Completed'
+                },{
+                    value: '选项7',
+                    label: 'Closed'
+                }],
+                selectchoo1: [{
+                    value: '选项1',
+                    label: 'Multiple options,please choose trip status'
+                }, {
+                    value: '选项2',
+                    label: 'Any'
+                }, {
+                    value: '选项3',
+                    label: 'NULL'
+                }, {
+                    value: '选项4',
+                    label: 'Pending'
+                }, {
+                    value: '选项5',
+                    label: 'In Progress'
+                },{
+                    value: '选项6',
+                    label: 'Completed'
+                },{
+                    value: '选项7',
+                    label: 'Closed'
+                }],
+                selectchoo2: [{
+                    value: '选项1',
+                    label: 'Multiple options,please choose trip status'
+                }, {
+                    value: '选项2',
+                    label: 'Any'
+                }, {
+                    value: '选项3',
+                    label: 'NULL'
+                }, {
+                    value: '选项4',
+                    label: 'Pending'
+                }, {
+                    value: '选项5',
+                    label: 'In Progress'
+                },{
+                    value: '选项6',
+                    label: 'Completed'
+                },{
+                    value: '选项7',
+                    label: 'Closed'
+                }],
+                selectchoo3: [{
+                    value: '选项1',
+                    label: 'Multiple options,please choose trip status'
+                }, {
+                    value: '选项2',
+                    label: 'Any'
+                }, {
+                    value: '选项3',
+                    label: 'NULL'
+                }, {
+                    value: '选项4',
+                    label: 'Pending'
+                }, {
+                    value: '选项5',
+                    label: 'In Progress'
+                },{
+                    value: '选项6',
+                    label: 'Completed'
+                },{
+                    value: '选项7',
+                    label: 'Closed'
+                }],
+                valuechoo: '',
+                valuechoo1: '',
+                valuechoo2: '',
+                valuechoo3: '',
+                options: [{
+                    value: '选项1',
+                    label: '111'
+                    }, {
+                    value: '选项2',
+                    label: '222'
+                    }, {
+                    value: '选项3',
+                    label: '333'
+                    }, {
+                    value: '选项4',
+                    label: '444'
+                    }, {
+                    value: '选项5',
+                    label: '555'
+                }],
+                value5: [],
+                value1: ''  ,
+                value2: ''  ,
+            }
+        },
+        methods: {
+            handleSizeChange(val) {
+                // console.log(`每页 ${val} 条`);
+            },
+            handleCurrentChange(val) {
+                // console.log(`当前页: ${val}`);
+            },
+            open5() {
+                this.$alert(
+                    "<span class='cartbtn'>Save As…</span>" +
+                    '<strong>chart片段</strong>' +
+                    '</br></br></br></br></br></br></br>', 
+                    'Chart', {
+                dangerouslyUseHTMLString: true,
+                showConfirmButton: false
+                });
+            }
+ 
+        }
+    })
+</script>
+</body>
+</html>
